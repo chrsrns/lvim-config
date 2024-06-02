@@ -73,7 +73,7 @@ lvim.plugins = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
-      "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+      "3rd/image.nvim",              -- Optional image support in preview window: See `# Preview Mode` for more information
     }
   }
 }
@@ -137,7 +137,7 @@ lvim.keys.normal_mode["d"] = '"_d'
 lvim.keys.visual_mode["d"] = '"_d'
 
 
--- Extended timeout for LSP format to 5s, since some formatters are too slow. 
+-- Extended timeout for LSP format to 5s, since some formatters are too slow.
 -- Without this, some formatters are killed before finishing.
 lvim.builtin.which_key.mappings["l"]["f"] = {
   function()
