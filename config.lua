@@ -39,3 +39,8 @@ lvim.plugins = {
     end
   },
 }
+
+lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
+lvim.builtin.which_key.mappings["e"] = {
+  "<cmd>NeoTreeFocusToggle<CR>", "Neotree Explorer"
+}
