@@ -82,3 +82,175 @@ lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
 lvim.builtin.which_key.mappings["e"] = {
   "<cmd>Neotree toggle<CR>", "Neotree Explorer"
 }
+
+-- Added to prevent CSSLS unknown at rule. This would make working with TailwindCSS cleaner.
+require("lvim.lsp.manager").setup("cssls", {
+  settings = {
+    css = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore"
+      }
+    },
+    scss = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore"
+      }
+    },
+    less = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore"
+      }
+    },
+  },
+})
+
+-- Added to set project detection method
+lvim.builtin.project.detection_methods = { "lsp", "pattern" }
+lvim.builtin.project.manual_mode = true
+
+-- My normal vim config + lvim's format on save
+lvim.format_on_save.enabled = true
+vim.o.wrap = true
+vim.o.linebreak = true
+vim.o.ic = false
+vim.opt.guicursor = "i-ci-ve:hor30"
+vim.opt.foldmethod = "indent"
+vim.opt.foldnestmax = 10
+vim.opt.foldenable = false
+vim.opt.foldlevel = 3
+
+-- WebC configuration
+vim.filetype.add({
+  extension = {
+    webc = 'html'
+  },
+  filename = { ['.webc'] = 'html' },
+  filetype = { ['.webc'] = 'html' }
+})
+vim.treesitter.language.register('html', 'webc')
+
+-- Make deletion command not add to clipboard
+lvim.keys.normal_mode["d"] = '"_d'
+lvim.keys.visual_mode["d"] = '"_d'
+
+
+-- Extended timeout for LSP format to 5s, since some formatters are too slow. 
+-- Without this, some formatters are killed before finishing.
+lvim.builtin.which_key.mappings["l"]["f"] = {
+  function()
+    require("lvim.lsp.utils").format { timeout_ms = 5000 }
+  end,
+  "Format",
+}
+
+-- Added more formatters. I don't remember what these are for
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  { name = "black" },
+  { name = "prettier" },
+  {
+    name = "djlint",
+    args = { "--indent", '2' }
+  }
+}
+
+-- Added tailwindcss LSP
+require("lvim.lsp.manager").setup("tailwindcss")
+
+-- Added explicit list for telescope to ignore
+lvim.builtin.telescope.defaults.file_ignore_patterns = {
+  "vendor/*",
+  "%.lock",
+  "__pycache__/*",
+  "%.sqlite3",
+  "%.ipynb",
+  "node_modules/*",
+  "%.jpg",
+  "%.jpeg",
+  "%.png",
+  "%.svg",
+  "%.otf",
+  "%.ttf",
+  ".git/",
+  "%.webp",
+  ".dart_tool/",
+  ".github/",
+  ".gradle/",
+  ".idea/",
+  ".settings/",
+  ".vscode/",
+  "__pycache__/",
+  "build/",
+  "env/",
+  "gradle/",
+  "node_modules/",
+  "target/",
+  "%.pdb",
+  "%.dll",
+  "%.class",
+  "%.exe",
+  "%.cache",
+  "%.ico",
+  "%.pdf",
+  "%.dylib",
+  "%.jar",
+  "%.docx",
+  "%.met",
+  "smalljre_*/*",
+  ".vale/",
+}
+
+-- Changed telescope layout (text search, etc)
+lvim.builtin.telescope.defaults.layout_config = {
+  prompt_position = "top",
+  height = 0.9,
+  width = 0.9,
+  bottom_pane = {
+    height = 25,
+    preview_cutoff = 120,
+  },
+  center = {
+    height = 0.4,
+    preview_cutoff = 40,
+    width = 0.5,
+  },
+  cursor = {
+    preview_cutoff = 40,
+  },
+  horizontal = {
+    preview_cutoff = 120,
+    preview_width = 0.6,
+  },
+  vertical = {
+    preview_cutoff = 40,
+  },
+  flex = {
+    flip_columns = 150,
+  },
+}
+for key, _ in pairs(lvim.builtin.telescope.pickers) do
+  if key ~= "planets" then
+    lvim.builtin.telescope.pickers[key].previewer = nil
+    lvim.builtin.telescope.pickers[key].theme = nil
+    lvim.builtin.telescope.pickers[key].layout_strategy = nil
+  end
+end
+lvim.builtin.telescope.pickers.git_files.previewer = nil
+lvim.builtin.telescope.defaults.layout_strategy = "flex"
+lvim.builtin.telescope.defaults.prompt_prefix = "  "
+lvim.builtin.telescope.defaults.selection_caret = "❯ "
+lvim.builtin.telescope.defaults.winblend = 10
+lvim.builtin.telescope.defaults.borderchars = {
+  prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
+  results = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+  preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+}
+
+-- Added linter for typscript and javascript
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  { command = "eslint", filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" } }
+}
