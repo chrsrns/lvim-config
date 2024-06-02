@@ -17,6 +17,12 @@ lvim.plugins = {
     end
   },
   {
+    "karb94/neoscroll.nvim",
+    config = function()
+      require('neoscroll').setup({})
+    end
+  },
+  {
     'wfxr/minimap.vim',
     build = "cargo install --locked code-minimap",
     -- cmd = {"Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight"},
