@@ -107,6 +107,11 @@ lvim.builtin.which_key.mappings["m"] = {
   "<cmd>MinimapToggle<CR>", "Toggle Minimap"
 }
 
+-- Added Format on Save tobble shortcut
+lvim.builtin.which_key.mappings["bS"] = {
+  "<cmd>LvimToggleFormatOnSave<CR>", "Toggle Format on Save"
+}
+
 -- Added to prevent CSSLS unknown at rule. This would make working with TailwindCSS cleaner.
 require("lvim.lsp.manager").setup("cssls", {
   settings = {
