@@ -79,8 +79,8 @@ lvim.plugins = {
     "ggandor/leap.nvim",
     name = "leap",
     config = function()
-      vim.keymap.set('n', 's', '<Plug>(leap)')
-      vim.keymap.set('n', 'S', '<Plug>(leap-from-window)')
+      vim.keymap.set({ 'n', 'v' }, 's', '<Plug>(leap)')
+      vim.keymap.set({ 'n', 'v' }, 'S', '<Plug>(leap-from-window)')
       vim.keymap.set({ 'x', 'o' }, 's', '<Plug>(leap-forward)')
       vim.keymap.set({ 'x', 'o' }, 'S', '<Plug>(leap-backward)')
     end,
@@ -191,6 +191,7 @@ require("lvim.lsp.manager").setup("tailwindcss")
 
 -- Added explicit list for telescope to ignore
 lvim.builtin.telescope.defaults.file_ignore_patterns = {
+  "po/*",
   "vendor/*",
   "%.lock",
   "__pycache__/*",
