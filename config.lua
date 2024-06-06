@@ -102,6 +102,11 @@ lvim.builtin.which_key.mappings["e"] = {
   "<cmd>Neotree toggle<CR>", "Neotree Explorer"
 }
 
+-- Added minimap toggle shortcut
+lvim.builtin.which_key.mappings["m"] = {
+  "<cmd>MinimapToggle<CR>", "Toggle Minimap"
+}
+
 -- Added to prevent CSSLS unknown at rule. This would make working with TailwindCSS cleaner.
 require("lvim.lsp.manager").setup("cssls", {
   settings = {
