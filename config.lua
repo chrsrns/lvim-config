@@ -193,7 +193,7 @@ require("lvim.lsp.manager").setup("tailwindcss")
 
 -- Added explicit list for telescope to ignore
 lvim.builtin.telescope.defaults.file_ignore_patterns = {
-  "po/*",
+  "^po/*",
   "vendor/*",
   "%.lock",
   "__pycache__/*",
@@ -231,6 +231,7 @@ lvim.builtin.telescope.defaults.file_ignore_patterns = {
   "%.jar",
   "%.docx",
   "%.met",
+  "%.po",
   "smalljre_*/*",
   ".vale/",
 }
