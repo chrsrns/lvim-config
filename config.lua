@@ -165,6 +165,8 @@ vim.treesitter.language.register('html', 'webc')
 lvim.keys.normal_mode["d"] = '"_d'
 lvim.keys.visual_mode["d"] = '"_d'
 
+-- Clear highlighting on escape
+lvim.keys.normal_mode["<esc>"] = ':nohl<CR>'
 
 -- Extended timeout for LSP format to 5s, since some formatters are too slow.
 -- Without this, some formatters are killed before finishing.
