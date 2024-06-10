@@ -23,6 +23,10 @@ lvim.builtin.which_key.mappings["bS"] = {
   "<cmd>LvimToggleFormatOnSave<CR>", "Toggle Format on Save"
 }
 
+lvim.builtin.which_key.mappings["p"] = {
+  "<cmd>Precognition toggle<CR>", "Toggle Precognition"
+}
+
 
 -- Added to prevent CSSLS unknown at rule. This would make working with TailwindCSS cleaner.
 require("lvim.lsp.manager").setup("cssls", {
