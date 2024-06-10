@@ -13,6 +13,11 @@ vim.opt.foldnestmax = 10
 vim.opt.foldenable = false
 vim.opt.foldlevel = 3
 
+-- Show both absolute and relative line numbering
+vim.opt.nu = true
+vim.opt.relativenumber = true
+vim.o.statuscolumn = "%s %l %r "
+
 -- WebC configuration
 vim.filetype.add({
   extension = {
