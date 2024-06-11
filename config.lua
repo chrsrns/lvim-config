@@ -6,7 +6,7 @@
 -- Import plugins from plugin module
 require("plugins")
 require("base")
-require("telescope")
+require("telescope_conf")
 
 lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
 lvim.builtin.which_key.mappings["e"] = {
