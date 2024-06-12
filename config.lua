@@ -27,6 +27,10 @@ lvim.builtin.which_key.mappings["p"] = {
   "<cmd>Precognition toggle<CR>", "Toggle Precognition"
 }
 
+lvim.builtin.which_key.mappings["o"] = {
+  name = "Bookmarks",
+  l = { "<cmd>BookmarksListAll<CR><cmd>lcl<CR><cmd>Telescope loclist<CR>", "Show all on Telescope" },
+}
 
 -- Added to prevent CSSLS unknown at rule. This would make working with TailwindCSS cleaner.
 require("lvim.lsp.manager").setup("cssls", {
