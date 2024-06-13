@@ -39,6 +39,13 @@ lvim.builtin.which_key.mappings["S"] = {
   Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
 }
 
+-- Post plugin declaration setup for `lsp_signature`
+lvim.lsp.on_attach_callback = function(client, bufnr)
+  -- …
+  require "lsp_signature".on_attach()
+  -- …
+end
+
 -- Added to prevent CSSLS unknown at rule. This would make working with TailwindCSS cleaner.
 require("lvim.lsp.manager").setup("cssls", {
   settings = {
