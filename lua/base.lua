@@ -11,7 +11,8 @@ vim.opt.guicursor = "i-ci-ve:hor30"
 vim.opt.foldmethod = "indent"
 vim.opt.foldnestmax = 10
 vim.opt.foldenable = false
-vim.opt.foldlevel = 3
+vim.opt.foldlevel = 1
+vim.opt.foldclose = "all"
 
 -- Show both absolute and relative line numbering
 vim.opt.nu = true
