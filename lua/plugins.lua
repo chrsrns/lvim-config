@@ -199,4 +199,7 @@ lvim.plugins = {
       })
     end,
   },
+  {
+    "HiPhish/rainbow-delimiters.nvim"
+  },
 }
